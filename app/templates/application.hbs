@@ -1,7 +1,17 @@
 {{page-title "EmberValidationBug"}}
 
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
+{{#with (changeset model bookValidations skipValidate=true) as |changesetObj|}}
+<label for="title">Change this value:</label>
+<Input id="title" @value={{get changesetObj "title"}}/>
+<p>It should not validate, as skipValidate=true is provided. But it still does: </p>
+<ul>
+{{#each changesetObj.errors as |errorSet|}}
+ {{#each errorSet.validation as |error|}}
+	<li>{{error}}</li>
+  {{/each}}
+{{/each}}
+</ul>
+
+{{/with}}
 
 {{outlet}}
