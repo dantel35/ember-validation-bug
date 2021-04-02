@@ -8,5 +8,5 @@ Example app to demonstrate a bug(?) in ember-changeset-validation, where passing
 {{/with}}
 
 
-does not actually skip validaiton.
+does not actually skip validation.
 
